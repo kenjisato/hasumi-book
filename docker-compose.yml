@@ -1,0 +1,14 @@
+services:
+  jupyter:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    container_name: ${CONTAINER_NAME:-jupyter}
+    ports:
+      - 8888:8888
+    volumes:
+      - type: bind
+        source: .
+        target: /home/jovyan
+    command: >-
+      start.sh jupyter lab
